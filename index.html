@@ -1,0 +1,25 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Uz-Versus L4D2 Stats</title>
+</head>
+<body>
+  <h1>Top L4D2 Players</h1>
+  <ul id="playerList"></ul>
+
+  <script>
+    fetch('stats.json')
+      .then(response => response.json())
+      .then(data => {
+        const list = document.getElementById('playerList');
+        data.topPlayers.forEach(player => {
+          const li = document.createElement('li');
+          li.textContent = `${player.name} - ${player.kills} kills`;
+          list.appendChild(li);
+        });
+      });
+  </script>
+</body>
+</html>
